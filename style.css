@@ -2,11 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Caveat', cursive;
+  font-family: 'Krub', 'Segoe UI', sans-serif;
 }
 
 body {
-  /* พื้นหลังสีเหลืองครีมอ่อนเหมือนในรูป */
   background: #fff9e8;
   color: #5a4a42;
   line-height: 1.8;
@@ -14,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== พื้นหลังเคลื่อนไหว สีตรงจากรูป ===== */
+/* ===== พื้นหลังเคลื่อนไหว ===== */
 .bg-animation {
   position: fixed;
   top: 0;
@@ -23,13 +22,9 @@ body {
   height: 100%;
   z-index: -1;
   background: 
-    /* สีเหลืองครีมอ่อน */
     radial-gradient(circle at 20% 30%, rgba(255, 235, 180, 0.5) 0%, transparent 50%),
-    /* สีแดงเชอร์รี่อ่อน */
     radial-gradient(circle at 80% 25%, rgba(255, 120, 120, 0.35) 0%, transparent 45%),
-    /* สีน้ำเงินกรมท่าอ่อน */
     radial-gradient(circle at 75% 75%, rgba(80, 110, 180, 0.3) 0%, transparent 45%),
-    /* สีเขียวอ่อน */
     radial-gradient(circle at 30% 80%, rgba(150, 200, 120, 0.3) 0%, transparent 50%);
   background-size: 200% 200%;
   animation: bgMove 18s ease infinite;
@@ -41,7 +36,13 @@ body {
   100% { background-position: 0% 0%; }
 }
 
-/* ===== โลโก้พร้อมเอฟเฟกต์ ===== */
+/* ===== ลิงก์กันขีดเส้นใต้ ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== โลโก้ ===== */
 .logo {
   width: 180px;
   height: auto;
@@ -54,54 +55,109 @@ body {
 
 .logo:hover {
   transform: scale(1.12);
-  /* เงาสีเหลืองทองอ่อน เข้ากับรูป */
   filter: drop-shadow(0 6px 14px rgba(210, 160, 60, 0.35));
 }
 
 /* ===== ส่วนหัว ===== */
 header {
-  /* ไล่สีเหลืองครีม-แดงอ่อน */
   background: linear-gradient(135deg, rgba(255, 235, 180, 0.85), rgba(255, 150, 150, 0.75));
-  padding: 60px 20px;
+  padding: 50px 20px;
   text-align: center;
   backdrop-filter: blur(6px);
   border-bottom: 2px solid rgba(210, 120, 60, 0.15);
 }
 
+.page-header {
+  padding: 30px 20px 50px;
+}
+
+.back-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.6);
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: white;
+  transform: translateX(-3px);
+}
+
 h1 { 
   font-size: 2.2rem; 
   margin-bottom: 10px;
-  /* สีน้ำเงินกรมท่า เหมือนตัวอักษรในรูป */
   color: #2b4490;
   text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
 }
 
-h2 {
-  /* สีแดงเชอร์รี่ */
+.sub-heading {
+  font-size: 1.1rem;
   color: #d64040;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 8px;
 }
 
-/* ===== ส่วนบริการ & ติดต่อ ===== */
-.services, .contact {
+.note-text {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  color: #6b5b52;
+}
+
+/* ===== ปุ่มทั่วไป ===== */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #f2c94c, #e8a838);
+  color: #4a3a20;
+  box-shadow: 0 4px 10px rgba(242, 201, 76, 0.35);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(242, 201, 76, 0.45);
+}
+
+/* ===== ส่วนบริการ ===== */
+.services, .contact, .products {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
+}
+
+h2 {
+  color: #d64040;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.card-link {
+  display: block;
+  margin: 15px 0;
 }
 
 .card {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 25px;
-  margin: 15px 0;
-  /* เงาสีเหลืองอ่อน */
   box-shadow: 0 4px 14px rgba(230, 180, 80, 0.18);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   border-left: 4px solid #f2c94c;
 }
 
-.card:hover {
+.clickable-card {
+  cursor: pointer;
+}
+
+.clickable-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 18px rgba(230, 180, 80, 0.25);
 }
@@ -109,8 +165,90 @@ h2 {
 .card h3 {
   color: #2b4490;
   margin-bottom: 8px;
+  font-size: 1.2rem;
 }
 
+.go-btn {
+  display: inline-block;
+  margin-top: 10px;
+  color: #d64040;
+  font-weight: 600;
+}
+
+/* ===== การ์ดสินค้า ===== */
+.product-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 4px 14px rgba(230, 180, 80, 0.18);
+  display: flex;
+  flex-wrap: wrap;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  background: #fff3cd;
+}
+
+.product-info {
+  flex: 1;
+  min-width: 280px;
+  padding: 20px;
+}
+
+.product-info h3 {
+  color: #2b4490;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.desc {
+  color: #7a6a60;
+  margin-bottom: 12px;
+}
+
+.price-stock {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.price {
+  font-weight: 700;
+  color: #d64040;
+  font-size: 1.1rem;
+}
+
+.stock {
+  color: #2b9040;
+  font-weight: 600;
+}
+
+.buy-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #f2c94c, #e8a838);
+  color: #4a3a20;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.buy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(242, 201, 76, 0.35);
+}
+
+/* ===== ติดต่อเรา ===== */
 .contact {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
@@ -119,7 +257,40 @@ h2 {
   border-top: 3px solid #f2c94c;
 }
 
-.contact p {
-  margin: 8px 0;
-  font-size: 1.05rem;
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 25px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  text-align: left;
+}
+
+.fb-btn {
+  background: linear-gradient(135deg, #1877f2, #3b88f4);
+  color: white;
+}
+
+.line-btn {
+  background: linear-gradient(135deg, #00c300, #29d929);
+  color: white;
+}
+
+.contact-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.contact-btn .icon {
+  font-size: 1.8rem;
 }
