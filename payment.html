@@ -1,156 +1,54 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>แจ้งชำระเงิน - BesttttStore</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  const item = params.get('item') || 'ไม่ระบุสินค้า';
+  document.getElementById('itemName').value = decodeURIComponent(item);
+};
 
-  <div class="bg-animation"></div>
+function copyText() {
+  navigator.clipboard.writeText('6617842286').then(() => {
+    alert('คัดลอกเลขบัญชีแล้ว! ✅');
+  });
+}
 
-  <header class="page-header">
-    <a href="javascript:history.back()" class="back-btn">← กลับไปหน้าก่อน</a>
-    <h1>💳 แจ้งชำระเงิน</h1>
-    <p>โอนเงินแล้ว กรุณากรอกข้อมูลด้านล่างค่ะ</p>
-  </header>
-
-  <section class="payment-section">
-    <!-- ข้อมูลบัญชีธนาคาร -->
-    <div class="bank-info-card">
-      <div class="bank-header">
-        <span class="bank-logo">🏦</span>
-        <span class="bank-name">ธนาคารไทยพาณิชย์ (SCB)</span>
-      </div>
-      
-      <div class="account-number">
-        <span class="label">เลขที่บัญชี</span>
-        <div class="num-wrap">
-          <span id="accNumber">416-036080-7</span>
-          <button class="copy-btn" onclick="copyText()">📋 คัดลอก</button>
-        </div>
-      </div>
-      
-      <div class="account-name">
-        <span class="label">ชื่อบัญชี</span>
-        <span>ศรัณย์ จันทร์แดง</span>
-      </div>
-
-      <div class="qr-box">
-        <p class="qr-note">สแกน QR Code เพื่อโอนเงินได้เลยค่ะ</p>
-        <img src="qrcode.png" alt="QR Code โอนเงิน" class="qr-img">
-        <p class="file-note">*รองรับไฟล์ PNG, JPEG เท่านั้น</p>
-      </div>
-
-      <p class="remind-note">⏰ ต้องอัปโหลดสลิปภายใน 30 นาทีหลังโอน</p>
-    </div>
-
-    <!-- ฟอร์มแจ้งโอน -->
-    <div class="form-card">
-      <h2>📤 อัปโหลดสลิป & ยืนยันการสั่งซื้อ</h2>
-      
-      <form id="paymentForm">
-        <div class="form-group">
-          <label>รายการสินค้าที่สั่ง</label>
-          <input type="text" id="itemName" readonly class="readonly-input">
-        </div>
-
-        <div class="form-group">
-          <label>จำนวนเงินที่โอน</label>
-          <input type="text" id="amount" placeholder="กรอกจำนวนเงิน..." required>
-        </div>
-
-        <div class="form-group">
-          <label>เวลาที่โอน</label>
-          <input type="time" id="payTime" required>
-        </div>
-
-        <div class="form-group">
-          <label>แนบไฟล์สลิป (PNG, JPG)</label>
-          <input type="file" id="slipFile" accept=".png,.jpg,.jpeg" required onchange="previewFile(event)">
-          <div id="previewArea" class="preview-area"></div>
-        </div>
-
-        <div class="form-group">
-          <label>เบอร์ติดต่อ / ชื่อลูกค้า</label>
-          <input type="text" id="customerInfo" placeholder="กรอกเบอร์หรือชื่อของคุณ..." required>
-        </div>
-
-        <button type="submit" class="submit-btn">✅ ส่งข้อมูลการสั่งซื้อ</button>
-      </form>
-    </div>
-
-    <!-- ผลลัพธ์ -->
-    <div id="resultBox" class="result-box" style="display:none;">
-      <h3>✅ ส่งข้อมูลสำเร็จ!</h3>
-      <p>ร้านจะตรวจสอบสลิปและแจ้งเตือนทาง Line โดยเร็วที่สุดค่ะ 💛</p>
-      <a href="index.html" class="btn primary-btn">กลับหน้าแรก</a>
-    </div>
-  </section>
-
-  <!-- สคริปต์ทำงาน -->
-  <script>
-    // ดึงข้อมูลสินค้าจากหน้าก่อนหน้า
-    window.onload = function() {
-      const params = new URLSearchParams(window.location.search);
-      const item = params.get('item') || 'ไม่ระบุสินค้า';
-      document.getElementById('itemName').value = decodeURIComponent(item);
+function previewFile(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('previewArea').innerHTML = 
+        `<img src="${e.target.result}" alt="ตัวอย่างสลิป" class="preview-img">`;
     };
+    reader.readAsDataURL(file);
+  }
+}
 
-    // คัดลอกเลขบัญชี
-    function copyText() {
-      navigator.clipboard.writeText('4160360807').then(() => {
-        alert('คัดลอกเลขบัญชีแล้ว! ✅');
-      });
-    }
-
-    // แสดงตัวอย่างรูปสลิป
-    function previewFile(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('previewArea').innerHTML = 
-            `<img src="${e.target.result}" alt="ตัวอย่างสลิป" class="preview-img">`;
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    // ส่งข้อมูลไปยัง Line
-    document.getElementById('paymentForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const itemName = document.getElementById('itemName').value;
-      const amount = document.getElementById('amount').value;
-      const payTime = document.getElementById('payTime').value;
-      const customerInfo = document.getElementById('customerInfo').value;
-      
-      // ข้อความที่จะส่งไปยัง Line
-      const message = `🛒 มีรายการสั่งซื้อใหม่!\n
+document.getElementById('paymentForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const itemName = document.getElementById('itemName').value;
+  const amount = document.getElementById('amount').value;
+  const payTime = document.getElementById('payTime').value;
+  const customerInfo = document.getElementById('customerInfo').value;
+  
+  // ข้อความที่จะส่ง
+  const message = `🛒 มีรายการสั่งซื้อใหม่!
 ━━━━━━━━━━━━━━
 📦 สินค้า: ${itemName}
 💰 จำนวนเงิน: ${amount} บาท
 ⏰ เวลาที่โอน: ${payTime}
 👤 ผู้สั่งซื้อ: ${customerInfo}
 ━━━━━━━━━━━━━━
-รูปสลิปแนบมาพร้อมข้อความแล้วค่ะ`;
+แนบรูปสลิปมาด้วยนะคะ 🙏`;
 
-      // ⚠️ เปลี่ยน YOUR_LINE_ID เป็นไอดี Line ของคุณ หรือใช้ Line Notify
-      // วิธีแบบง่าย: สร้างกลุ่มแล้วเชิญ @line-notify เข้ากลุ่ม แล้วเอาโทเคนมาใส่
-      alert('ข้อความที่จะส่ง:\n\n' + message + '\n\n(ระบบพร้อมส่งไปยัง Line เมื่อตั้งค่าโทเคนเรียบร้อยแล้ว ✅');
-      
-      // แสดงผลสำเร็จ
-      document.querySelector('.form-card').style.display = 'none';
-      document.getElementById('resultBox').style.display = 'block';
-    });
-  </script>
-
-</body>
-</html>
+  // เปิด Line พร้อมข้อความที่เตรียมไว้
+  // ⚠️ เปลี่ยน @171gtwgn เป็นไอดี Line ของคุณ
+  const lineId = "171gtwgn"; // ใส่ไอดีไลน์ของคุณ ไม่ต้องใส่ @
+  const lineLink = `https://line.me/R/ti/p/@${lineId}?text=${encodeURIComponent(message)}`;
+  
+  // เปิดหน้าแชท Line
+  window.open(lineLink, '_blank');
+  
+  // แสดงผลสำเร็จ
+  document.querySelector('.form-card').style.display = 'none';
+  document.getElementById('resultBox').style.display = 'block';
+});
