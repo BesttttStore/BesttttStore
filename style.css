@@ -359,3 +359,91 @@ h2 {
   color: #d690b0;
   font-weight: bold;
 }
+
+/* ===== หน้าชำระเงิน ===== */
+.payment-section {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.bank-info-card, .form-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(230, 180, 80, 0.15);
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed #f8d8a8;
+}
+
+.bank-logo { font-size: 2rem; }
+.bank-name { font-size: 1.3rem; font-weight: 700; color: #992e5f; }
+
+.label { font-size: 0.9rem; color: #b86b8c; display: block; margin-bottom: 5px; }
+
+.account-number { margin-bottom: 15px; }
+.num-wrap { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+#accNumber { font-size: 1.4rem; font-weight: 800; color: #2b4490; letter-spacing: 1px; }
+.copy-btn {
+  background: #fce4ec;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #992e5f;
+  transition: 0.2s;
+}
+.copy-btn:hover { background: #f8c8dc; }
+
+.account-name { margin-bottom: 25px; }
+.account-name span { font-size: 1.2rem; font-weight: 700; color: #5a4a42; }
+
+.qr-box { text-align: center; padding: 20px; background: #fff9f0; border-radius: 16px; margin-bottom: 15px; }
+.qr-note { color: #d67aa0; margin-bottom: 15px; }
+.qr-img { width: 180px; height: 180px; object-fit: contain; background: white; padding: 10px; border-radius: 12px; }
+.file-note { font-size: 0.85rem; color: #b89060; margin-top: 10px; }
+
+.remind-note { text-align: center; color: #e53e3e; font-weight: 600; margin-top: 15px; }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #7a2b50; }
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid #f8c8dc;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fff;
+}
+.form-group input:focus { outline: none; border-color: #f09cc0; box-shadow: 0 0 0 3px rgba(240,156,192,0.2); }
+.readonly-input { background: #f9f0f4; color: #7a5a68; }
+
+.preview-area { margin-top: 15px; }
+.preview-img { max-width: 200px; border-radius: 12px; border: 2px solid #f8c8dc; }
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #f2c94c, #e8a838);
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4a3a20;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(242,201,76,0.35); }
+
+.result-box { text-align: center; padding: 30px; }
+.result-box h3 { color: #2b9040; font-size: 1.5rem; margin-bottom: 15px; }
