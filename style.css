@@ -6,14 +6,15 @@
 }
 
 body {
-  background: #fef5f5;
-  color: #4a3a3a;
+  /* พื้นหลังสีเหลืองครีมอ่อนเหมือนในรูป */
+  background: #fff9e8;
+  color: #5a4a42;
   line-height: 1.8;
   position: relative;
   overflow-x: hidden;
 }
 
-/* ===== พื้นหลังเคลื่อนไหว สีฟ้า-แดง ===== */
+/* ===== พื้นหลังเคลื่อนไหว สีตรงจากรูป ===== */
 .bg-animation {
   position: fixed;
   top: 0;
@@ -22,11 +23,16 @@ body {
   height: 100%;
   z-index: -1;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(100, 180, 255, 0.35) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(255, 120, 120, 0.35) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 200, 200, 0.25) 0%, transparent 60%);
+    /* สีเหลืองครีมอ่อน */
+    radial-gradient(circle at 20% 30%, rgba(255, 235, 180, 0.5) 0%, transparent 50%),
+    /* สีแดงเชอร์รี่อ่อน */
+    radial-gradient(circle at 80% 25%, rgba(255, 120, 120, 0.35) 0%, transparent 45%),
+    /* สีน้ำเงินกรมท่าอ่อน */
+    radial-gradient(circle at 75% 75%, rgba(80, 110, 180, 0.3) 0%, transparent 45%),
+    /* สีเขียวอ่อน */
+    radial-gradient(circle at 30% 80%, rgba(150, 200, 120, 0.3) 0%, transparent 50%);
   background-size: 200% 200%;
-  animation: bgMove 15s ease infinite;
+  animation: bgMove 18s ease infinite;
 }
 
 @keyframes bgMove {
@@ -35,9 +41,9 @@ body {
   100% { background-position: 0% 0%; }
 }
 
-/* ===== โลโก้ ===== */
+/* ===== โลโก้พร้อมเอฟเฟกต์ ===== */
 .logo {
-  width: 160px;
+  width: 180px;
   height: auto;
   display: block;
   margin: 0 auto 15px;
@@ -47,29 +53,37 @@ body {
 }
 
 .logo:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 6px 12px rgba(255, 100, 100, 0.35));
+  transform: scale(1.12);
+  /* เงาสีเหลืองทองอ่อน เข้ากับรูป */
+  filter: drop-shadow(0 6px 14px rgba(210, 160, 60, 0.35));
 }
 
+/* ===== ส่วนหัว ===== */
 header {
-  background: linear-gradient(135deg, rgba(100, 180, 255, 0.75), rgba(255, 120, 120, 0.75));
+  /* ไล่สีเหลืองครีม-แดงอ่อน */
+  background: linear-gradient(135deg, rgba(255, 235, 180, 0.85), rgba(255, 150, 150, 0.75));
   padding: 60px 20px;
   text-align: center;
   backdrop-filter: blur(6px);
+  border-bottom: 2px solid rgba(210, 120, 60, 0.15);
 }
 
 h1 { 
   font-size: 2.2rem; 
   margin-bottom: 10px;
-  color: #c53030;
+  /* สีน้ำเงินกรมท่า เหมือนตัวอักษรในรูป */
+  color: #2b4490;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
 }
 
 h2 {
-  color: #e53e3e;
+  /* สีแดงเชอร์รี่ */
+  color: #d64040;
   margin-bottom: 20px;
   text-align: center;
 }
 
+/* ===== ส่วนบริการ & ติดต่อ ===== */
 .services, .contact {
   max-width: 900px;
   margin: 40px auto;
@@ -77,21 +91,35 @@ h2 {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 25px;
   margin: 15px 0;
-  box-shadow: 0 4px 12px rgba(255, 100, 100, 0.18);
+  /* เงาสีเหลืองอ่อน */
+  box-shadow: 0 4px 14px rgba(230, 180, 80, 0.18);
   transition: transform 0.3s ease;
+  border-left: 4px solid #f2c94c;
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(230, 180, 80, 0.25);
+}
+
+.card h3 {
+  color: #2b4490;
+  margin-bottom: 8px;
 }
 
 .contact {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 30px;
   text-align: center;
+  border-top: 3px solid #f2c94c;
+}
+
+.contact p {
+  margin: 8px 0;
+  font-size: 1.05rem;
 }
