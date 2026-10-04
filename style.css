@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Krub', 'Segoe UI', sans-serif;
+  /* ฟอนต์ไทยตรงแบบในรูป */
+  font-family: 'Noto Sans Thai', sans-serif;
 }
 
 body {
@@ -36,7 +37,6 @@ body {
   100% { background-position: 0% 0%; }
 }
 
-/* ===== ลิงก์กันขีดเส้นใต้ ===== */
 a {
   text-decoration: none;
   color: inherit;
@@ -90,6 +90,7 @@ h1 {
   margin-bottom: 10px;
   color: #2b4490;
   text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+  font-weight: 800;
 }
 
 .sub-heading {
@@ -104,7 +105,6 @@ h1 {
   color: #6b5b52;
 }
 
-/* ===== ปุ่มทั่วไป ===== */
 .btn {
   display: inline-block;
   padding: 12px 30px;
@@ -125,7 +125,6 @@ h1 {
   box-shadow: 0 6px 15px rgba(242, 201, 76, 0.45);
 }
 
-/* ===== ส่วนบริการ ===== */
 .services, .contact, .products {
   max-width: 900px;
   margin: 40px auto;
@@ -137,6 +136,7 @@ h2 {
   margin-bottom: 25px;
   text-align: center;
   font-size: 1.7rem;
+  font-weight: 700;
 }
 
 .card-link {
@@ -166,6 +166,7 @@ h2 {
   color: #2b4490;
   margin-bottom: 8px;
   font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .go-btn {
@@ -208,6 +209,7 @@ h2 {
   color: #2b4490;
   margin-bottom: 8px;
   font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .desc {
@@ -248,13 +250,42 @@ h2 {
   box-shadow: 0 4px 12px rgba(242, 201, 76, 0.35);
 }
 
-/* ===== ติดต่อเรา ===== */
+/* ===== ช่องทางติดต่อ แบบในรูป ===== */
 .contact {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 30px;
+  background: transparent;
+  padding: 40px 20px;
+  border: none;
+}
+
+.contact-top-tag {
   text-align: center;
-  border-top: 3px solid #f2c94c;
+  margin-bottom: 15px;
+}
+
+.contact-top-tag span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fce4ec;
+  color: #ad4b74;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.contact h2 {
+  color: #992e5f;
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.contact-subtext {
+  text-align: center;
+  color: #d67aa0;
+  margin-bottom: 35px;
+  font-size: 0.95rem;
 }
 
 .contact-buttons {
@@ -262,35 +293,69 @@ h2 {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
-.contact-btn {
+.contact-channel-card {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 15px 25px;
-  border-radius: 20px;
+  background: #fff;
+  border: 1.5px solid #f8c8dc;
+  border-radius: 16px;
+  padding: 18px 24px;
+  min-width: 260px;
   transition: all 0.3s ease;
-  min-width: 220px;
+}
+
+.contact-channel-card:hover {
+  border-color: #f09cc0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(232, 130, 174, 0.15);
+}
+
+.channel-icon-wrap {
+  position: relative;
+}
+
+.channel-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fce4ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.status-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.channel-info {
+  flex: 1;
   text-align: left;
 }
 
-.fb-btn {
-  background: linear-gradient(135deg, #1877f2, #3b88f4);
-  color: white;
+.channel-label {
+  font-size: 0.85rem;
+  color: #b86b8c;
 }
 
-.line-btn {
-  background: linear-gradient(135deg, #00c300, #29d929);
-  color: white;
+.channel-value {
+  font-weight: 700;
+  color: #7a2b50;
+  font-size: 1rem;
 }
 
-.contact-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.contact-btn .icon {
-  font-size: 1.8rem;
+.channel-arrow {
+  color: #d690b0;
+  font-weight: bold;
 }
