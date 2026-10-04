@@ -122,7 +122,7 @@
       }
     }
 
-    // ส่งข้อมูลไปยัง Line
+    // ส่งข้อมูลไปยัง Line - แก้ลิงก์ใหม่ให้ข้อความขึ้นจริง
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -131,6 +131,7 @@
       const payTime = document.getElementById('payTime').value;
       const customerInfo = document.getElementById('customerInfo').value;
       
+      // ข้อความที่จะส่ง
       const message = `🛒 มีรายการสั่งซื้อใหม่!
 ━━━━━━━━━━━━━━
 📦 สินค้า: ${itemName}
@@ -140,14 +141,18 @@
 ━━━━━━━━━━━━━━
 แนบรูปสลิปมาด้วยนะคะ 🙏`;
 
+      // === เปลี่ยนรูปแบบลิงก์ใหม่ ===
+      // ใช้ lineit/share จะทำงานดีกว่า ทั้งมือถือและคอม
       const lineId = "171gtwgn";
-      const lineLink = `https://line.me/R/ti/p/@${lineId}?text=${encodeURIComponent(message)}`;
+      
+      // วิธีที่ 1: ใช้หน้าแชร์ของ LINE (แนะนำ ทำงานชัวร์ที่สุด)
+      const lineLink = `https://social-plugins.line.me/lineit/share?text=${encodeURIComponent(message)}&url=https://line.me/R/ti/p/@${lineId}`;
+      
+      // เปิดลิงก์
       window.open(lineLink, '_blank');
       
+      // แสดงข้อความสำเร็จ
       document.querySelector('.form-card').style.display = 'none';
       document.getElementById('resultBox').style.display = 'block';
     });
-  </script>
-
-</body>
-</html>
+</script>
