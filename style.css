@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #fff5f8;
+  color: #5a4a52;
+  line-height: 1.8;
+}
+
+header {
+  background: linear-gradient(135deg, #ffd6e8, #cfe7ff);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+h2 {
+  color: #d67eb5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.services, .contact {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  margin: 15px 0;
+  box-shadow: 0 4px 12px rgba(255, 182, 213, 0.2);
+}
+
+.contact {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+}
