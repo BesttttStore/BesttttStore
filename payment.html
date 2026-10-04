@@ -95,21 +95,18 @@
   </section>
 
   <script>
-    // ดึงชื่อสินค้าจากหน้าก่อน
     window.onload = function() {
       const params = new URLSearchParams(window.location.search);
       const item = params.get('item') || 'ไม่ระบุสินค้า';
       document.getElementById('itemName').value = decodeURIComponent(item);
     };
 
-    // คัดลอกเลขบัญชี
     function copyText() {
       navigator.clipboard.writeText('6617842286').then(() => {
         alert('คัดลอกเลขบัญชีแล้ว! ✅');
       });
     }
 
-    // แสดงตัวอย่างรูปสลิป
     function previewFile(event) {
       const file = event.target.files[0];
       if (file) {
@@ -122,8 +119,7 @@
       }
     }
 
-    // ส่งข้อมูล - วิธีที่ชัวร์ที่สุด
-    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    document.getElementById('paymentForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const itemName = document.getElementById('itemName').value;
@@ -131,7 +127,7 @@
       const payTime = document.getElementById('payTime').value;
       const customerInfo = document.getElementById('customerInfo').value;
       
-      const message = `🛒 มีรายการสั่งซื้อใหม่!
+      const messageText = `🛒 มีรายการสั่งซื้อใหม่!
 ━━━━━━━━━━━━━━
 📦 สินค้า: ${itemName}
 💰 จำนวนเงิน: ${amount} บาท
@@ -140,14 +136,19 @@
 ━━━━━━━━━━━━━━
 แนบรูปสลิปมาด้วยนะคะ 🙏`;
 
-      // === วิธีที่ 1: แสดงข้อความให้คัดลอกเอง (ชัวร์ที่สุด!) ===
-      alert('คัดลอกข้อความด้านล่าง แล้วส่งที่แชทร้านนะคะ:\n\n' + message);
-      
-      // === วิธีที่ 2: เปิดหน้าแชร์ LINE (เสริม) ===
-      const shareUrl = 'https://social-plugins.line.me/lineit/share?text=' + encodeURIComponent(message);
-      window.open(shareUrl, '_blank');
-      
-      // แสดงผลสำเร็จ
+      // ✅ คัดลอกข้อความไปยังคลิปบอร์ดอัตโนมัติ
+      try {
+        await navigator.clipboard.writeText(messageText);
+        alert('✅ คัดลอกข้อความเรียบร้อยแล้ว!\n\nจะเปิดแชทร้าน → วางข้อความแล้วกดส่งได้เลยค่ะ 💛');
+      } catch {
+        // ถ้าคัดลอกไม่ได้ แสดงข้อความให้คัดลอกเอง
+        alert('คัดลอกข้อความนี้:\n\n' + messageText + '\n\nแล้วไปวางที่แชทร้านนะคะ');
+      }
+
+      // ✅ เปิดแชทร้าน
+      window.open('https://line.me/R/ti/p/@171gtwgn', '_blank');
+
+      // แสดงหน้าจอสำเร็จ
       document.querySelector('.form-card').style.display = 'none';
       document.getElementById('resultBox').style.display = 'block';
     });
